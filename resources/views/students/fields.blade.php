@@ -1,0 +1,5 @@
+<div class="field"><label for="name">Name</label><input id="name" name="name" type="text" value="{{ old('name', $student->name) }}" maxlength="255" required autocomplete="name"></div>
+<div class="field"><label for="email">Email</label><input id="email" name="email" type="email" value="{{ old('email', $student->email) }}" maxlength="255" required autocomplete="email"></div>
+<div class="field"><label for="phone">Phone</label><input id="phone" name="phone" type="tel" value="{{ old('phone', $student->phone) }}" maxlength="20" required autocomplete="tel"></div>
+<div class="field"><label for="address">Address <span class="hint">(optional)</span></label><textarea id="address" name="address" maxlength="500">{{ old('address', $student->address) }}</textarea></div>
+<div class="field"><label for="date_of_birth">Date of birth <span class="hint">(optional)</span></label><input id="date_of_birth" name="date_of_birth" type="date" value="{{ old('date_of_birth', $student->date_of_birth?->format('Y-m-d')) }}"></div>

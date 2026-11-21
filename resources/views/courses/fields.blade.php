@@ -1,0 +1,8 @@
+<div class="field"><label for="name">Course name</label><input id="name" name="name" type="text" value="{{ old('name', $course->name) }}" maxlength="255" required></div>
+<div class="field"><label for="description">Description <span class="hint">(optional)</span></label><textarea id="description" name="description" maxlength="2000">{{ old('description', $course->description) }}</textarea></div>
+<div class="field"><label for="duration">Duration (weeks)</label><input id="duration" name="duration" type="number" min="1" max="520" value="{{ old('duration', $course->duration) }}" required></div>
+<div class="field"><label for="fee">Fee</label><input id="fee" name="fee" type="number" min="0" max="99999999.99" step="0.01" value="{{ old('fee', $course->fee) }}" required></div>
+<div class="field"><label for="difficulty">Difficulty</label><select id="difficulty" name="difficulty" required><option value="">Choose difficulty</option>
+@foreach (['easy' => 'Easy', 'medium' => 'Medium', 'hard' => 'Hard'] as $value => $label)<option value="{{ $value }}" @selected(old('difficulty', $course->difficulty) === $value)>{{ $label }}</option>@endforeach
+</select></div>
+<div class="field check-row"><input type="hidden" name="is_active" value="0"><input id="is_active" name="is_active" type="checkbox" value="1" @checked(old('is_active', $course->exists ? $course->is_active : true))><label for="is_active">This course is currently offered</label></div>
