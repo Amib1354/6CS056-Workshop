@@ -1,21 +1,22 @@
-# Workshop 1: Training Institute Management
+# Workshop 2: MVC in Laravel
 
-This Laravel application implements the Week 1 Student and Course CRUD exercise with MySQL and Blade views.
+This branch keeps the Workshop 1 student and course CRUD behavior and reorganizes it using Laravel MVC patterns.
 
-## Database setup
+## Run locally
 
-1. Start MySQL from the XAMPP Control Panel.
-2. In DBeaver, create a MySQL database named WorkshopDB if it does not already exist. The SQL is: CREATE DATABASE WorkshopDB;
-3. Open .env and set DB_USERNAME and DB_PASSWORD to the account used by your MySQL connection. The example defaults to root with an empty password; keep the password local and do not commit .env.
-4. Run the migrations with: php artisan migrate
+1. Start MySQL in XAMPP and make sure the `WorkshopDB` database exists in DBeaver.
+2. Check the local database settings in `.env`.
+3. Run `php artisan migrate` if the tables have not been created yet.
+4. Run `php artisan serve` and open `http://127.0.0.1:8000`.
 
-## Run the application
+## Workshop 2 structure
 
-Run: php artisan serve
+- `StudentController` and `CourseController` handle CRUD requests, searching, and validation.
+- `routes/web.php` uses `Route::resource` and named routes.
+- Route model binding provides each requested student or course to its controller action.
+- `resources/views/components/layouts/app.blade.php` provides the shared page layout; the navbar and footer are separate components.
+- Alert, delete form, input, and textarea components are reused across the views.
+- Student and course create/edit pages each use one shared form partial.
+- `Student` casts date of birth as a date and exposes the calculated age accessor.
 
-Open http://127.0.0.1:8000. The root page redirects to Students.
-
-- Students: /students
-- Courses: /courses
-
-Both resources include create, list, view, edit, and delete operations, validation, search, and pagination. The student-course many-to-many relationship is intentionally deferred to a later workshop, as the Week 1 guide specifies.
+The `Workshop1` branch is the starting CRUD implementation. `Workshop2` is based on it and contains the MVC refactor.
